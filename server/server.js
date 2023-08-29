@@ -1,4 +1,5 @@
 const express = require('express');
+import path from 'path'
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.get('/api', (req, res) => {
 
 
 
-app.use(express.static('../src/index.html'));
+app.use(express.static(path.resolve(__dirname, '../src/index.html')));
 
 
 // catch-all route handler
