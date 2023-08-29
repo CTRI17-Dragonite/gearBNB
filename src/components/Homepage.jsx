@@ -1,11 +1,14 @@
 import React from 'react'
+import NavBar from './NavBar.jsx';
+import Map from './Map.jsx';
 
 
 const Homepage = (props) => {
   return (
     <div>
-      <h1>this is the home page</h1>
-      {/* <Link></Link> */}
+      <NavBar />
+      <Map />
+      <h1>end of homepage</h1>
     </div>
   )
 }
