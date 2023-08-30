@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useJsApiLoader, GoogleMap } from '@react-google-maps/api';
 // const dotenv = require('dotenv').config();
+// const Dotenv = require('dotenv-webpack').config();
+import Dotenv from 'dotenv-webpack'
+Dotenv;
 
 
 const center = { lat: 29.4252, lng: -98.4946};
@@ -9,7 +12,7 @@ const Map = (props) => {
   const [ libraries ] = useState(['places']);
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyCVH_6c7itNHgRJ2WAH9xv-nGedPgMVWBU',
+    googleMapsApiKey: process.env.ACCESS_KEY,
     libraries
   })
 
@@ -20,9 +23,9 @@ const Map = (props) => {
   }
 
   return (
-    <div className='border-2 border-red-500'>Map
+    <div className='flex justify-center border-2 border-red-500'>Map
 
-        <div className='border-2 border-green-500 justify-right absolute right-0'>
+      <div className='flex border-2 border-green-500 justify-center absolute right-0'>
           <GoogleMap
             center={center}
             zoom={9}
