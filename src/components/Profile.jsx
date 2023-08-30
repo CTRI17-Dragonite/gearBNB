@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import NavBar from './NavBar.jsx'
-
+import AddListing from './AddListing.jsx'
 
 const Profile = (props) => {
-
+  const navigate = useNavigate();
+  const [listings, setListings] = useState()
   const handleDelete = () => {
     console.log('deleting')
+  }
+
+  const handleAddListing = () => {
+    console.log('inAddListing')
+    navigate("/addlisting")
+  }
+
+  const getListings = async () => {
+    await fetch('./api/getListings')
+      .then(res => res.json())
+      .then(resData => {
+        setListings(resData)
+        console.log(listings)
+      })
   }
 
   return (
@@ -15,10 +31,10 @@ const Profile = (props) => {
       </div>
       <div className='flex justify-center'>
         <div className='flex justify-between border-2 border-red-500'>
-          <a href="#_" className="px-5 py-2.5 relative rounded group overflow-hidden font-medium bg-purple-50 text-purple-600 inline-block mr-10">
+          <button onClick={handleAddListing} className="px-5 py-2.5 relative rounded group overflow-hidden font-medium bg-purple-50 text-purple-600 inline-block mr-10">
             <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-purple-600 group-hover:h-full opacity-90"></span>
             <span className="relative group-hover:text-white">Add Listing</span>
-          </a>
+          </button>
 
           <a href="#_" className="px-5 py-2.5 relative rounded group overflow-hidden font-medium bg-purple-50 text-purple-600 inline-block">
             <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-purple-600 group-hover:h-full opacity-90"></span>
@@ -39,6 +55,7 @@ const Profile = (props) => {
 
           <div className='border-2 border-green-500'>
             Fetch History Here
+            
           </div>
         </div>
       </div>

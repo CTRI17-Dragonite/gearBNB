@@ -5,15 +5,15 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  entry: path.resolve(__dirname, '/src/index.js'),
+  entry: path.resolve(__dirname, './src/index.js'),
   output: {
-    path: path.resolve(__dirname, 'src/dist'),
+    path: path.resolve(__dirname, './src/dist'),
     filename: 'bundle.js',
   },
   devServer: {
     static: {
       publicPath: '/dist',
-      directory: path.join(__dirname, '/src/dist'),
+      directory: path.join(__dirname, './src/dist'),
     },
     compress: true,
     historyApiFallback: true,
@@ -25,7 +25,7 @@ module.exports = {
   mode: "development",
   plugins: [
     new HtmlWebpackPlugin({
-      template: '/src/index.html',
+      template: './src/index.html',
       filename: 'index.html',
     }),
     // new webpack.DefinePlugin({

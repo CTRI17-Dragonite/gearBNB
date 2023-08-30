@@ -3,6 +3,7 @@ import NavBar from './components/NavBar.jsx';
 import Login from './components/Login.jsx';
 import SignUp from './components/SignUp.jsx';
 import Homepage from './components/Homepage.jsx';
+import AddListing from './components/AddListing.jsx';
 import Profile from './components/Profile.jsx';
 import { BrowserRouter as Router, Switch, Route, Link, Routes } from 'react-router-dom';
 // createcontexts
@@ -23,7 +24,8 @@ const App = () => {
           <Route path="/" exact element={<Login />} />
           <Route path="/home" exact element={<Homepage />} />
           <Route path="/SignUp" exact element={<SignUp />} />
-          <Route path="/profile" exact element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/addListing" element={<AddListing />} />
           {/* <Login /> */}
           {/* <Homepage />
           <SignUp /> */}
