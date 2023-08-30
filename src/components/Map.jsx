@@ -12,7 +12,7 @@ const Map = (props) => {
   const [ libraries ] = useState(['places']);
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyCVH_6c7itNHgRJ2WAH9xv-nGedPgMVWBU',
+    googleMapsApiKey: ,
     libraries
   })
 
@@ -45,3 +45,5 @@ const Map = (props) => {
 }
 
 export default Map
+
+'AIzaSyCVH_6c7itNHgRJ2WAH9xv-nGedPgMVWBU'
