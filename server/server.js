@@ -49,7 +49,7 @@ connection.connect((error) => {
 
 
 
-app.use(express.static('../src/index.html'));
+app.use(express.static(path.resolve(__dirname, '../src/index.html')));
 
 
 // catch-all route handler
