@@ -1,14 +1,28 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [zipCode, setZipCode] = useState()
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username, password)
+    console.log(username, password, zipCode)
+    const body = {
+      username: username,
+      password: password,
+      zipcode: zipCode
+    }
+    const response = await fetch('/api/user/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+    navigate('/home')
   }
 
   return (
@@ -26,7 +40,7 @@ const SignUp = () => {
           </div>
           <div className="mb-4">
             <label className="mb-1">Zip Code</label>
-            <input className="border-2 p-2 w-full" type="text" placeholder="Zip Code" required/>
+            <input className="border-2 p-2 w-full" type="text" placeholder="Zip Code" onChange={(e) => setZipCode(e.target.value)} required/>
           </div>
           <button type="submit" className="border-2 w-full p-2 hover:bg-sky-700 pointer-events-auto">
             Submit
