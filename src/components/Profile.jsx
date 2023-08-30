@@ -5,6 +5,7 @@ import AddListing from './AddListing.jsx'
 
 const Profile = (props) => {
   const navigate = useNavigate();
+  const [listings, setListings] = useState()
   const handleDelete = () => {
     console.log('deleting')
   }
@@ -12,7 +13,15 @@ const Profile = (props) => {
   const handleAddListing = () => {
     console.log('inAddListing')
     navigate("/addlisting")
-    
+  }
+
+  const getListings = async () => {
+    await fetch('./api/getListings')
+      .then(res => res.json())
+      .then(resData => {
+        setListings(resData)
+        console.log(listings)
+      })
   }
 
   return (
@@ -46,6 +55,7 @@ const Profile = (props) => {
 
           <div className='border-2 border-green-500'>
             Fetch History Here
+            
           </div>
         </div>
       </div>
