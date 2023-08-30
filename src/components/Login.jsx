@@ -6,9 +6,11 @@ const Login = () => {
   const [password, setPassword] = useState('')
   
   const handleUsername = e => {
-    e.preventDefault;
-    if(username === '' || password === '') return;
-    console.log(username)
+    e.preventDefault();
+    if(username === '' || password === '') {
+      // e.preventDefault
+      return
+    };
   };
 
   return (
